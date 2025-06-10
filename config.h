@@ -138,6 +138,7 @@ static const Key keys[] = {
   { 0,                            XK_F3,     spawn,          SHCMD("pamixer --increase 5")},
   { 0,                            XK_F4,     spawn,          SHCMD("brightnessctl set 10%-")},
   { 0,                            XK_F5,     spawn,          SHCMD("brightnessctl set +10%")},
+  { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("flameshot gui")},
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
