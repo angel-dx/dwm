@@ -45,6 +45,7 @@ static const Rule rules[] = {
     {"Gimp",          NULL,     NULL,       0,            1,            -1},
     {"zen",           NULL,     NULL,       1 << 2,       0,            -1},
     {"obsidian",      NULL,     NULL,       1 << 4,       0,            -1},
+    {"Emacs",         NULL,     NULL,       1 << 1,       0,            -1},
 };
 
 /* layout(s) */
@@ -63,7 +64,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "|  󱇙 ",      tile },    /* first entry is default */
 	{ "|   ",      NULL },    /* no layout function means floating behavior */
-  { "[M]",      monocle },
+	{ "[M]",      monocle },
 	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
 	{ "H[]",      deck },
@@ -137,14 +138,18 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-  { MODKEY,                       XK_s,      spawn,          SHCMD("~/dotfiles/scripts/launch.sh")},
-  { 0,                            XK_F1,     spawn,          SHCMD("pamixer --toggle-mute")},
-  { 0,                            XK_F2,     spawn,          SHCMD("pamixer --decrease 5")},
-  { 0,                            XK_F3,     spawn,          SHCMD("pamixer --increase 5")},
-  { 0,                            XK_F4,     spawn,          SHCMD("brightnessctl set 10%-")},
-  { 0,                            XK_F5,     spawn,          SHCMD("brightnessctl set +10%")},
-  { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("flameshot gui")},
-  {MODKEY | ShiftMask,            XK_b,      spawn,          SHCMD("zen-browser")},
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("~/dotfiles/scripts/launch.sh")},
+	{ 0,                            XK_F1,     spawn,          SHCMD("pamixer --toggle-mute")},
+	{ 0,                            XK_F2,     spawn,          SHCMD("pamixer --decrease 5")},
+	{ 0,                            XK_F3,     spawn,          SHCMD("pamixer --increase 5")},
+	{ 0,                            XK_F4,     spawn,          SHCMD("brightnessctl set 10%-")},
+	{ 0,                            XK_F5,     spawn,          SHCMD("brightnessctl set +10%")},
+	{MODKEY | ShiftMask,            XK_b,      spawn,          SHCMD("zen-browser")},
+	{ MODKEY,                       XK_Print,  spawn,          SHCMD("scrot") },
+	{ MODKEY,                       XK_Print,  spawn,          SHCMD("scrot -e 'xclip -selection clipboard -t image/png -i $f'") },
+	{ MODKEY|ShiftMask,             XK_Print,  spawn,          SHCMD("scrot -s -e 'xclip -selection clipboard -t image/png -i $f'") },
+	{ MODKEY|ControlMask,           XK_Print,  spawn,          SHCMD("scrot -u -e 'xclip -selection clipboard -t image/png -i $f'") },
+	{ MODKEY|ShiftMask|ControlMask, XK_Print,  spawn,          SHCMD("scrot -cd 3 -e 'xclip -selection clipboard -t image/png -i $f'") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -154,7 +159,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,       quit,           {0} },
 };
 
 /* button definitions */
