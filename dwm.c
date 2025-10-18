@@ -1987,8 +1987,8 @@ spawn(const Arg *arg)
 {
 	struct sigaction sa;
 
-	if (arg->v == dmenucmd)
-		dmenumon[0] = '0' + selmon->num;
+	if (arg->v == roficmd)
+    ;
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
